@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: mainFont1;
+    src: url(./fonts/1ZFS7N918ojhhd0nQWdj3jz4w.woff2);
+}
+@font-face {
+    font-family: mainFont2;
+    src: url(./fonts/DXD0Q7LSl7HEvDzucnyLnGBHM.woff2);
+}
+@font-face {
+    font-family: mainFont;
+    src: url(./fonts/gNMEW3NwSYq_9WD3yHQiFQ.woff2);
+}
+@font-face {
+    font-family: paraFont;
+    src: url(./fonts/v2q8JTTTs7McDMSEhnxAIBqd0.woff2);
+}
+@font-face {
+    font-family: subMainFont;
+    src: url(./fonts/vQyevYAyHtARFwPqUzQGpnDs.woff2);
+}
