@@ -330,9 +330,7 @@ function Hero({ skillsRef, experinceRef }) {
           onEnterBack: () => {
             const cardEl = card.current;
 
-            document
-              .querySelector(".card-fixed-wrapper")
-              .appendChild(cardEl);
+            document.querySelector(".card-fixed-wrapper").appendChild(cardEl);
 
             gsap.set(cardEl, {
               position: "fixed",
@@ -349,17 +347,28 @@ function Hero({ skillsRef, experinceRef }) {
     };
 
     setupScroll();
-    return () => mm.revert();
+
+    return () => {
+      mm.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+
+      if (!card.current) return;
+
+      const wrapper = document.querySelector(".card-fixed-wrapper");
+      if (wrapper && card.current.parentElement !== wrapper) {
+        wrapper.appendChild(card.current);
+        gsap.set(card.current, { clearProps: "all" });
+      }
+    };
   });
 
   return (
     <div
       ref={heroSection}
-      className="relative min-h-[90%] lg:min-h-screen w-full flex justify-center items-center text-white flex-wrap lg:flex-nowrap gap-4 md:gap-0 lg:gap-0 p-16 lg:p-0"
+      className="relative min-h-[90%] lg:min-h-screen w-full flex justify-center items-center text-[#303030] dark:text-white flex-wrap lg:flex-nowrap gap-4 md:gap-0 lg:gap-0 p-16 lg:p-0"
     >
-
       {/* for animation only */}
-      <div className="card-fixed-wrapper hidden lg:block fixed inset-0 pointer-events-none z-50">
+      <div className="card-fixed-wrapper hidden lg:block fixed inset-0 pointer-events-none">
         <div
           ref={card}
           className="fixed top-1/2 left-1/2 pointer-events-auto -translate-x-1/2 -translate-y-1/2"
@@ -382,7 +391,7 @@ function Hero({ skillsRef, experinceRef }) {
           </h1>
         </div>
       </div>
-      
+
       {/* for other devices */}
       <div className="relative h-full w-[65%] flex justify-center items-center lg:invisible">
         <HeroCard />

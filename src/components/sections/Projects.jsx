@@ -193,7 +193,7 @@ function Projects() {
   return (
     <div
       ref={projectsSection}
-      className="min-h-screen w-full max-w-[1200px] flex flex-col justify-center text-white py-20 lg:py-30 px-6 md:px-10"
+      className="min-h-screen w-full max-w-[1200px] flex flex-col justify-center text-[#303030] dark:text-white py-20 lg:py-30 px-6 md:px-10"
     >
       <div className="flex flex-col justify-center gap-6">
         <h2
@@ -222,7 +222,7 @@ function Projects() {
         <div className="flex justify-center mt-16">
           <Link
             to="/projects"
-            className="border-1 px-10 pt-1 pb-1.5 border-[#D0FF71] text-[#D0FF71] font-[mainFont] text-2xl font-semibold rounded-3xl"
+            className="border-1 px-10 pt-1 pb-1.5 border-[#5E67E6] dark:border-[#D0FF71] text-[#5E67E6] dark:text-[#D0FF71] font-[mainFont] text-2xl font-semibold rounded-3xl"
           >
             BROWSE ALL PROJECTS
           </Link>

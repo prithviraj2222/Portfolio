@@ -22,7 +22,7 @@ function Navbar() {
 
   return (
     <div ref={nav} className="w-screen fixed flex justify-center top-4.5 z-20">
-      <div className="bg-[#1A1A1B] text-white w-lg p-2 rounded-4xl flex items-center justify-between">
+      <div className="bg-white border border-[#DADADA] dark:border-none dark:bg-[#1a1a1bf4] text-[#303030] dark:text-white w-lg p-2 rounded-4xl flex items-center justify-between">
         <div className="h-10 w-10 rounded-[50%] overflow-hidden">
           <img src={img1} alt="" />
         </div>
@@ -33,7 +33,7 @@ function Navbar() {
             <Link to="/projects">Projects</Link>
             <p>Contact</p>
           </div>
-          <button className="bg-white text-[#303030] px-7 py-1.5 font-[paraFont] rounded-4xl text-lg">
+          <button className="bg-[#303030] dark:bg-white text-white dark:text-[#303030] px-7 py-1.5 font-[paraFont] rounded-4xl text-lg">
             Resume
           </button>
         </div>

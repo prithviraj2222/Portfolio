@@ -6,6 +6,7 @@ import AboutPage from "./pages/AboutPage";
 import gsap from "gsap";
 import { useContext, useRef, useEffect } from "react";
 import CursorContext from "./context/cursor/cursorContext";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { cursor: cursorChange } = useContext(CursorContext);
@@ -34,9 +35,10 @@ function App() {
 
     mm.add("(min-width: 1024px)", () => {
       if (cursorChange === "big") {
-        cursor.current.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`;
+        cursor.current.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>`;
         gsap.to(cursor.current, {
           scale: 4,
+          marginLeft: 50,
           duration: 0.3,
           ease: "power3.out",
         });
@@ -44,6 +46,8 @@ function App() {
         cursor.current.innerHTML = ``;
         gsap.to(cursor.current, {
           scale: 1,
+          marginLeft: 18,
+          marginTop: 12,
           duration: 0.3,
           ease: "power3.out",
         });
@@ -55,10 +59,10 @@ function App() {
     <div
       onMouseMove={cursorMove}
       onMouseLeave={cursorHide}
-      className="w-full relative bg-[#010102ec] min-h-screen"
+      className="w-full relative bg-white dark:bg-black min-h-screen"
     >
       <div className="relative">
-        <svg className="fixed inset-0 w-full h-full opacity-40 pointer-events-none z-0">
+        <svg className="hidden dark:block fixed inset-0 w-full h-full opacity-40 pointer-events-none z-0">
           <filter id="grain">
             <feTurbulence
               type="fractalNoise"
@@ -82,9 +86,10 @@ function App() {
         <div className="relative z-10">
           <div
             ref={cursor}
-            className={`h-4 w-4 m-4 z-21 bg-[#D0FF71] fixed rounded-[50%] opacity-0 flex justify-center items-center pointer-events-none`}
+            className={`h-4 w-4 z-21 text-white dark:text-[#303030] bg-[#5E67E6] dark:bg-[#D0FF71] fixed rounded-[50%] opacity-0 flex justify-center items-center pointer-events-none`}
           ></div>
           <Router>
+            <ScrollToTop />
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />

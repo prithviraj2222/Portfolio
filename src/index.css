@@ -20,3 +20,5 @@
     font-family: subMainFont;
     src: url(./fonts/vQyevYAyHtARFwPqUzQGpnDs.woff2);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

@@ -55,7 +55,7 @@ function ProjectCard({ project }) {
     <a
       onMouseEnter={() => setCursor("big")}
       onMouseLeave={() => setCursor("default")}
-      className="relative block w-full h-full rounded-3xl bg-cover bg-center overflow-hidden cursor-pointer"
+      className="relative block w-full h-full rounded-3xl bg-cover bg-center overflow-hidden cursor-pointer text-white"
       href={project.projectUrl}
       target="_blank"
       style={{ backgroundImage: `url(${project.url})` }}
@@ -63,7 +63,7 @@ function ProjectCard({ project }) {
       {/* <div className="absolute inset-0 bg-transparent z-22"></div> */}
       <div className="absolute inset-0 bg-black/40 z-1"></div>
       <div className="relative h-full w-full z-2 flex flex-col justify-center items-center gap-4">
-        <div className="px-4 py-1 bg-[#D0FF71] text-[#303030] rounded-3xl font-[paraFont] text-sm mb-1">
+        <div className="px-4 py-1 bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] rounded-3xl font-[paraFont] text-sm mb-1">
           {project.type}
         </div>
         <h2 className="text-4xl md:text-6xl leading-none font-bold font-[mainFont] tracking-normal px-4 text-center">
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
           {project.techItems.map((item, i) => (
             <div
               key={i}
-              className="border-2 px-4 pt-1 pb-1.5 border-[#D0FF71] text-[#D0FF71] font-semibold bg-black/25 rounded-3xl"
+              className="border-2 px-4 pt-1 pb-1.5 border-[#5E67E6] dark:border-[#D0FF71] text-[#5E67E6] dark:text-[#D0FF71] font-semibold bg-black/25 rounded-3xl"
             >
               {item}
             </div>

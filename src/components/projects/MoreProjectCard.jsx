@@ -18,16 +18,16 @@ function MoreProjectCard() {
         src={img1}
         className="h-60 md:h-80 w-full object-cover rounded-3xl"
       />
-      <span className="absolute top-4 left-4 px-4 py-1 bg-[#D0FF71] text-[#303030] rounded-3xl font-[paraFont] text-sm">
+      <span className="absolute top-4 left-4 px-4 py-1 bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] rounded-3xl font-[paraFont] text-sm">
         Full Stack
       </span>
       <div className="flex flex-col gap-5">
         <div>
-          <button className="border-2 px-4 pt-1 pb-1.5 border-[#D0FF71] text-[#D0FF71] font-semibold bg-black/25 rounded-3xl">
+          <button className="border px-3.5 pt-0 pb-0.5 text-3.5 border-[#5E67E6] dark:border-[#D0FF71] text-[#5E67E6] dark:text-[#D0FF71] font-[paraFont] rounded-3xl">
             ok
           </button>
         </div>
-        <h3 className="text-2xl md:text-4xl font-[mainFont] tracking-normal text-white">
+        <h3 className="text-2xl md:text-4xl font-[mainFont] tracking-normal">
           JAY SHREE RAM
         </h3>
         <p className="text-sm tracking-wide font-[paraFont]">
