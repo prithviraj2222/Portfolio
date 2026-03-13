@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import CursorContext from "../../context/cursor/cursorContext";
+
 export default function SkillOption({ skill, open, setOpen }) {
   const isOpen = open === skill.id;
+  const { setCursor } = useContext(CursorContext);
+
   return (
     <>
       <div
+        onMouseEnter={() => setCursor({ type: "expand", image: skill.image, id: skill.id })}
+        onMouseLeave={() => setCursor("default")}
         key={skill.id}
-        className={`border-b pb-6
+        className={`border-b py-6 
             ${isOpen ? "border-[#5E67E6] dark:border-[#D0FF71]" : "border-[#DADADA] dark:border-[#5c5c5c]"}`}
       >
         <div
@@ -13,7 +20,9 @@ export default function SkillOption({ skill, open, setOpen }) {
         >
           <h3
             className={`text-2xl md:text-4xl font-[mainFont] tracking-normal ${
-              isOpen ? "text-[#5E67E6] dark:text-[#D0FF71]" : "text-[#303030] dark:text-white"
+              isOpen
+                ? "text-[#5E67E6] dark:text-[#D0FF71]"
+                : "text-[#303030] dark:text-white"
             }`}
           >
             {skill.id}. {skill.title}

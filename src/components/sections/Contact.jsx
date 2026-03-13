@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import emailjs from "@emailjs/browser";
 import HeroCard from "../hero/HeroCard";
 
-function Contact() {
+const Contact = forwardRef((props, ref) => {
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -31,7 +31,7 @@ function Contact() {
       });
   };
   return (
-    <div className="min-h-screen w-full max-w-[1200px] flex flex-col lg:flex-row justify-center items-center text-[#303030] dark:text-white px-6 md:px-10 py-20 lg:py-0 gap-20 lg:gap-0">
+    <div ref={ref} className="min-h-screen w-full max-w-[1200px] flex flex-col lg:flex-row justify-center items-center text-[#303030] dark:text-white px-6 md:px-10 py-20 lg:py-0 gap-20 lg:gap-0">
       <div className="h-full w-full lg:w-1/2 flex justify-center">
         <HeroCard />
       </div>
@@ -88,6 +88,6 @@ function Contact() {
       </div>
     </div>
   );
-}
+})
 
 export default Contact;

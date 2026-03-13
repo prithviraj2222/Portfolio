@@ -10,6 +10,7 @@ import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { cursor: cursorChange } = useContext(CursorContext);
+  const prevCursor = useRef(null);
 
   const cursor = useRef();
   const cursorMove = (e) => {
@@ -42,13 +43,63 @@ function App() {
           duration: 0.3,
           ease: "power3.out",
         });
+      } else if (cursorChange?.type === "expand") {
+        const comingFromBelow =
+          prevCursor.current !== null && prevCursor.current < cursorChange.id;
+
+        const oldImg = cursor.current.querySelector("img");
+
+        // old image scroll
+        if (oldImg) {
+          gsap.to(oldImg, {
+            y: comingFromBelow ? "-100%" : "100%",
+            duration: 0.3,
+            ease: "power3.in",
+          });
+        }
+
+        // create new image
+        const newImg = document.createElement("img");
+        newImg.src = cursorChange.image;
+        newImg.style.cssText =
+          "width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;";
+        newImg.style.transform = `translateY(${comingFromBelow ? "100%" : "-100%"})`;
+        cursor.current.appendChild(newImg);
+
+        // new image coming
+        gsap.to(newImg, {
+          y: 0,
+          duration: 0.3,
+          ease: "power3.out",
+          onComplete: () => {
+            if (oldImg) oldImg.remove();
+          },
+        });
+
+        gsap.to(cursor.current, {
+          width: 190,
+          height: 110,
+          borderRadius: 6,
+          rotate: 6,
+          marginLeft: 20,
+          marginTop: -40,
+          scale: 1,
+          duration: 0.2,
+          ease: "power3.out",
+        });
+
+        prevCursor.current = cursorChange.id;
       } else {
         cursor.current.innerHTML = ``;
         gsap.to(cursor.current, {
-          scale: 1,
+          width: 16,
+          height: 16,
+          borderRadius: "50%",
+          rotate: 0,
           marginLeft: 18,
           marginTop: 12,
-          duration: 0.3,
+          scale: 1,
+          duration: 0.2,
           ease: "power3.out",
         });
       }
@@ -86,7 +137,7 @@ function App() {
         <div className="relative z-10">
           <div
             ref={cursor}
-            className={`h-4 w-4 z-21 text-white dark:text-[#303030] bg-[#5E67E6] dark:bg-[#D0FF71] fixed rounded-[50%] opacity-0 flex justify-center items-center pointer-events-none`}
+            className={`h-4 w-4 z-21 overflow-hidden text-white dark:text-[#303030] bg-[#5E67E6] dark:bg-[#D0FF71] fixed rounded-[50%] opacity-0 flex justify-center items-center pointer-events-none`}
           ></div>
           <Router>
             <ScrollToTop />

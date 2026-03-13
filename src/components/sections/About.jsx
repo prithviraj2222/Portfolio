@@ -28,7 +28,7 @@ function About() {
     return () => mm.revert();
   });
   return (
-    <div className="min-h-[50vh] lg:min-h-screen w-full max-w-[1200px] flex flex-col justify-center text-white py-20 lg:py-30">
+    <div className="min-h-[50vh] lg:min-h-screen w-full max-w-[1200px] flex flex-col justify-center text-[#303030] dark:text-white py-20 lg:py-30">
       <div className="w-full flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-0">
         <div className="w-full lg:w-1/2 px-6 md:px-10 pt-2">
           <div className="w-full flex flex-col justify-center gap-10">
