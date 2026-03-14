@@ -1,107 +1,10 @@
-// import React from "react";
-// import spotify from "../../images/spotify.jpg";
-// import ecopulse from "../../images/ecopulse.jpg";
-// import hostel from "../../images/hostel.jpg";
-// import ProjectCard from "../projects/ProjectCard";
-// import { Link, useLocation } from "react-router-dom";
-// import MoreProjectCard from "../projects/MoreProjectCard";
-
-// function Projects() {
-//   const location = useLocation();
-
-//   const data = [
-//     {
-//       id: 1,
-//       title: "Spotify Clone",
-//       type: "Frontend",
-//       description:
-//         "Responsive music web app with interactive UI and music controls. Uses local storage for song management.",
-//       url: spotify,
-//       projectUrl: "https://prithviraj2222.github.io/spotify-clone2/",
-//       techItems: ["HTML", "CSS", "JavaScript"],
-//     },
-//     {
-//       id: 2,
-//       title: "EcoPulse",
-//       type: "Full Stack",
-//       description:
-//         "Environmental awareness full-stack app featuring a carbon footprint calculator and Eco Buddy/Bully quiz.",
-//       url: ecopulse,
-//       projectUrl: "https://capable-speculoos-f21228.netlify.app/",
-//       techItems: ["React.js", "Tailwind CSS", "Node.js", "Express.js"],
-//     },
-//     {
-//       id: 3,
-//       title: "Hostel Management System",
-//       type: "Full Stack",
-//       description:
-//         "Digitized hostel operations including student registration, fee tracking, and inventory management with REST APIs.",
-//       url: hostel,
-//       projectUrl: "https://gurukul-hostel.netlify.app/",
-//       techItems: [
-//         "React.js",
-//         "Tailwind CSS",
-//         "Node.js",
-//         "Express.js",
-//         "MongoDB Atlas",
-//       ],
-//     },
-//   ];
-
-//   return (
-//     <div className="min-h-screen w-full max-w-[1200px] flex flex-col justify-center text-white py-20 lg:py-30 px-6 md:px-10">
-//       <div className="flex flex-col justify-center gap-6">
-//         <h2
-//           className={`${location.pathname === "/projects" ? "text-6xl md:text-9xl" : "text-4xl md:text-6xl"} leading-none font-bold font-[mainFont] tracking-tight`}
-//         >
-//           FEATURED PROJECTS
-//         </h2>
-//         <p className="text-xl tracking-wide font-[paraFont] mb-12">
-//           Some things I've built along the way.
-//         </p>
-//       </div>
-//       <div className="flex flex-col gap-6">
-//         {data.map((project, idx) => (
-//           <ProjectCard key={project.id} project={project} />
-//         ))}
-//         {location.pathname === "/" ? (
-//           <div className="flex justify-center mt-4">
-//             <Link
-//               to="/projects"
-//               className="border-1 px-10 pt-1 pb-1.5 border-[#D0FF71] text-[#D0FF71] font-[mainFont] text-2xl font-semibold rounded-3xl"
-//             >
-//               BROWSE ALL PROJECTS
-//             </Link>
-//           </div>
-//         ) : (
-//           <div className="pt-15">
-//             <div className="mt-4 flex items-center gap-4">
-//               <h2
-//                 className={`text-6xl font-bold font-[mainFont] tracking-normal whitespace-nowrap`}
-//               >
-//                 MORE PROJECTS
-//               </h2>
-//               <div className="border-t-[1px] w-full"></div>
-//             </div>
-//             <div className="w-full mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-20">
-//               <MoreProjectCard />
-//               <MoreProjectCard />
-//               <MoreProjectCard />
-//               <MoreProjectCard />
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Projects;
-
 import React, { useRef } from "react";
+import ads from "../../images/ads.avif";
 import spotify from "../../images/spotify.jpg";
-import ecopulse from "../../images/ecopulse.jpg";
+import ecopulse from "../../images/ecopulse.jpg"; 
+import psychii from "../../images/psychii.avif";
 import hostel from "../../images/hostel.jpg";
+import ems from "../../images/ems.avif";
 import ProjectCard from "../projects/ProjectCard";
 import { Link, useLocation } from "react-router-dom";
 import MoreProjectCard from "../projects/MoreProjectCard";
@@ -154,6 +57,16 @@ function Projects() {
   const data = [
     {
       id: 1,
+      title: "Admin Dashboard System",
+      type: "Full Stack",
+      description:
+        "An Admin Dashboard that allows admin to manage users and view system data from a single panel. It also includes features like filtering, analytics, and report generation.",
+      url: ads,
+      projectUrl: "https://admindashboardsystem.netlify.app/",
+      techItems: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL", "JWT", "Recharts", "ExcelJS"],
+    },
+    {
+      id: 2,
       title: "Spotify Clone",
       type: "Frontend",
       description:
@@ -163,7 +76,7 @@ function Projects() {
       techItems: ["HTML", "CSS", "JavaScript"],
     },
     {
-      id: 2,
+      id: 3,
       title: "EcoPulse",
       type: "Full Stack",
       description:
@@ -173,7 +86,7 @@ function Projects() {
       techItems: ["React.js", "Tailwind CSS", "Node.js", "Express.js"],
     },
     {
-      id: 3,
+      id: 4,
       title: "Hostel Management System",
       type: "Full Stack",
       description:
@@ -187,6 +100,29 @@ function Projects() {
         "Express.js",
         "MongoDB Atlas",
       ],
+    },
+  ];
+
+  const otherProjectData = [
+    {
+      id: 1,
+      title: "Psychii",
+      type: "Frontend",
+      description:
+        "Psychii is a React + Vite web app that checks a user's thinking through a 20 question quiz based on their Profession and Relationship Status, and shows whether the mindset is positive or negative.",
+      url: psychii,
+      projectUrl: "https://psychii.netlify.app/",
+      techItems: ["React (Vite)", "Tailwind CSS"],
+    },
+    {
+      id: 2,
+      title: "Employee Management System",
+      type: "Frontend",
+      description:
+        "Employee Management System is a React-based web application where Admin and Employees can log in with different roles. The Admin assigns tasks to employees, employees can update task status (completed or failed), and the data is managed using Local Storage.",
+      url: ems,
+      projectUrl: "https://emsystemm.netlify.app/",
+      techItems: ["React (Vite)", "Tailwind CSS", "Local Storage"],
     },
   ];
 
@@ -236,10 +172,9 @@ function Projects() {
             <div className="border-t-[1px] w-full"></div>
           </div>
           <div className="w-full mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10 md:gap-y-20">
-            <MoreProjectCard />
-            <MoreProjectCard />
-            <MoreProjectCard />
-            <MoreProjectCard />
+            {otherProjectData.map((project) => (
+              <MoreProjectCard project={project} />
+            ))}
           </div>
         </div>
       )}
