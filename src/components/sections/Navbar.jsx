@@ -42,7 +42,7 @@ function Navbar() {
       <div
         className={`bg-white/90 backdrop-blur-xs border border-[#DADADA] dark:border-none dark:bg-[#111111]/90 
   text-[#303030] dark:text-white p-2.5 rounded-4xl transition-all duration-500
-  ${open ? "w-[48%]" : "w-[45%]"} lg:w-lg`}
+  ${open ? "scale-x-[1.03]" : "scale-x-100"} lg:w-lg`}
       >
         <div className="w-full flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -50,7 +50,7 @@ function Navbar() {
               <img src={img1} alt="" />
             </div>
             <p
-              className={`text-sm font-[paraFont] transition-all duration-500 ${open ? "hidden" : ""} lg:hidden`}
+              className={`text-sm font-[paraFont] transition-all duration-50 ${open ? "invisible" : "visible"} lg:hidden`}
             >
               Available for work <span className="text-green-500">●</span>
             </p>
@@ -62,7 +62,7 @@ function Navbar() {
               <Link to="/projects">Projects</Link>
               <p className="cursor-pointer" onClick={handleContact}>Contact</p>
             </div>
-            <a href="/Resume.pdf" download  className="bg-[#303030] dark:bg-white text-white dark:text-[#303030] px-7 py-1.5 font-[paraFont] rounded-4xl text-lg">
+            <a href="/Resume.pdf" target="_blank" className="bg-[#303030] dark:bg-white text-white dark:text-[#303030] px-7 py-1.5 font-[paraFont] rounded-4xl text-lg">
               Resume
             </a>
           </div>
@@ -96,7 +96,7 @@ function Navbar() {
               <p className="cursor-pointer" onClick={handleContact}>Contact</p>
 
             <div>
-              <a href="/Resume.pdf" download className="bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] px-7 py-1.5 rounded-4xl text-lg cursor-pointer">
+              <a href="/Resume.pdf" target="_blank" className="bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] px-7 py-1.5 rounded-4xl text-lg cursor-pointer">
                 Resume
               </a>
             </div>
