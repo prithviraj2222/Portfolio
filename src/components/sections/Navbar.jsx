@@ -4,6 +4,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import CursorContext from "../../context/cursor/cursorContext";
 import gsap from "gsap";
 import ContactContext from "../../context/contact/contactContext";
+import Button from "../common/Button";
 
 function Navbar() {
   const nav = useRef();
@@ -16,12 +17,12 @@ function Navbar() {
 
   const handleContact = () => {
     if (location.pathname === "/") {
-      contactRef.current?.scrollIntoView({ behavior: "smooth" });
+      window.lenis?.scrollTo(contactRef.current, { duration: 0.8 });
     } else {
       navigate("/");
       setTimeout(() => {
-        contactRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 500);
+        window.lenis?.scrollTo(contactRef.current, { duration: 0.8 });
+      }, 400);
     }
   };
 
@@ -60,11 +61,11 @@ function Navbar() {
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
               <Link to="/projects">Projects</Link>
-              <p className="cursor-pointer" onClick={handleContact}>Contact</p>
+              <p className="cursor-pointer" onClick={handleContact}>
+                Contact
+              </p>
             </div>
-            <a href="/Resume.pdf" target="_blank" className="bg-[#303030] dark:bg-white text-white dark:text-[#303030] px-7 py-1.5 font-[paraFont] rounded-4xl text-lg">
-              Resume
-            </a>
+            <Button variant="primary" href="/Resume.pdf">Resume</Button>
           </div>
           <button
             onClick={() => setOpen(!open)}
@@ -93,12 +94,14 @@ function Navbar() {
             <Link to="/projects" onClick={() => setOpen(false)}>
               Projects
             </Link>
-              <p className="cursor-pointer" onClick={handleContact}>Contact</p>
+            <p className="cursor-pointer" onClick={handleContact}>
+              Contact
+            </p>
 
             <div>
-              <a href="/Resume.pdf" target="_blank" className="bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] px-7 py-1.5 rounded-4xl text-lg cursor-pointer">
+              <Button variant="secondary" href="/Resume.pdf">
                 Resume
-              </a>
+              </Button>
             </div>
           </div>
         </div>

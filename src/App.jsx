@@ -7,6 +7,10 @@ import gsap from "gsap";
 import { useContext, useRef, useEffect } from "react";
 import CursorContext from "./context/cursor/cursorContext";
 import ScrollToTop from "./ScrollToTop";
+import Lenis from "@studio-freight/lenis";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const { cursor: cursorChange } = useContext(CursorContext);
@@ -105,6 +109,30 @@ function App() {
       }
     });
   }, [cursorChange]);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      lerp: 0.06,
+      wheelMultiplier: 0.9,
+      smoothTouch: false,
+    });
+
+    window.lenis = lenis;
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <div

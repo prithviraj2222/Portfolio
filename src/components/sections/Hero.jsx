@@ -406,7 +406,7 @@ function Hero({ skillsRef, experinceRef }) {
             DEVELOPER
           </h1>
           <p className="md:absolute lg:absolute -bottom-15 text-sm md:text-lg lg:text-lg text-center md:text-end lg:text-end tracking-wide font-[subMainFont]">
-            I'm a US-based digital designer and <br /> Framer developer
+            I'm a BCA Final Year Student and <br /> Web developer
           </p>
         </div>
       </div>

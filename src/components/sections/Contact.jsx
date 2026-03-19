@@ -1,6 +1,7 @@
 import React, { useRef, forwardRef } from "react";
 import emailjs from "@emailjs/browser";
 import HeroCard from "../hero/HeroCard";
+import Button from "../common/Button";
 
 const Contact = forwardRef((props, ref) => {
   const form = useRef();
@@ -31,7 +32,10 @@ const Contact = forwardRef((props, ref) => {
       });
   };
   return (
-    <div ref={ref} className="min-h-screen w-full max-w-[1200px] flex flex-col lg:flex-row justify-center items-center text-[#303030] dark:text-white px-6 md:px-10 py-20 lg:py-0 gap-20 lg:gap-0">
+    <div
+      ref={ref}
+      className="min-h-screen w-full max-w-[1200px] flex flex-col lg:flex-row justify-center items-center text-[#303030] dark:text-white px-6 md:px-10 py-20 lg:py-0 gap-20 lg:gap-0"
+    >
       <div className="h-full w-full lg:w-1/2 flex justify-center">
         <HeroCard />
       </div>
@@ -76,18 +80,15 @@ const Contact = forwardRef((props, ref) => {
               ></textarea>
             </label>
             <div>
-              <button
-                type="submit"
-                className="border px-10 pt-1 pb-1.5 border-[#5E67E6] dark:border-[#D0FF71] text-[#5E67E6] dark:text-[#D0FF71] font-[mainFont] text-2xl font-semibold rounded-3xl cursor-pointer"
-              >
+              <Button variant="outline" type="submit">
                 SUBMIT
-              </button>
+              </Button>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-})
+});
 
 export default Contact;
