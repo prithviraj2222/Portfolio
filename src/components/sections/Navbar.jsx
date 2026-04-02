@@ -1,3 +1,124 @@
+// import { useContext, useRef, useEffect, useState } from "react";
+// import img1 from "../../images/qrxY8NagVO40NBrdhFEGgFR3PYY.avif";
+// import { useLocation, useNavigate, Link } from "react-router-dom";
+// import CursorContext from "../../context/cursor/cursorContext";
+// import gsap from "gsap";
+// import ContactContext from "../../context/contact/contactContext";
+// import Button from "../common/Button";
+
+// function Navbar() {
+//   const nav = useRef();
+//   const [open, setOpen] = useState(false);
+//   const { cursor: cursorChange } = useContext(CursorContext);
+//   const { contactRef } = useContext(ContactContext);
+
+//   const location = useLocation();
+//   const navigate = useNavigate();
+
+//   const handleContact = () => {
+//     if (location.pathname === "/") {
+//       window.lenis?.scrollTo(contactRef.current, { duration: 0.8 });
+//     } else {
+//       navigate("/");
+//       setTimeout(() => {
+//         window.lenis?.scrollTo(contactRef.current, { duration: 0.8 });
+//       }, 400);
+//     }
+//   };
+
+//   useEffect(() => {
+//     if (cursorChange === "big") {
+//       gsap.to(nav.current, {
+//         zIndex: 25,
+//       });
+//     } else {
+//       gsap.to(nav.current, {
+//         zIndex: 20,
+//       });
+//     }
+//   }, [cursorChange]);
+
+//   return (
+//     <div ref={nav} className="w-screen fixed flex justify-center top-4.5 z-20">
+//       <div
+//         className={`bg-white/90 backdrop-blur-xs border border-[#DADADA] dark:border-none dark:bg-[#111111]/90 
+//   text-[#303030] dark:text-white p-2.5 rounded-4xl transition-all duration-500
+//   ${open ? "scale-x-[1.03]" : "scale-x-100"} lg:w-lg`}
+//       >
+//         <div className="w-full flex items-center justify-between gap-4">
+//           <div className="flex items-center gap-3">
+//             <div className="h-10 w-10 rounded-full overflow-hidden">
+//               <img src={img1} alt="" />
+//             </div>
+//             <p
+//               className={`text-sm font-[paraFont] transition-all duration-50 ${open ? "invisible" : "visible"} lg:hidden`}
+//             >
+//               Available for work <span className="text-green-500">●</span>
+//             </p>
+//           </div>
+//           <div className="hidden lg:flex w-[83%] gap-4 items-center justify-between">
+//             <div className="flex gap-4 items-center text-md font-[paraFont]">
+//               <Link to="/">Home</Link>
+//               <Link to="/about">About</Link>
+//               <Link to="/projects">Projects</Link>
+//               <p className="cursor-pointer" onClick={handleContact}>
+//                 Contact
+//               </p>
+//             </div>
+//             <Button variant="primary" href="/Resume.pdf">
+//               Resume
+//             </Button>
+//           </div>
+//           <button
+//             onClick={() => setOpen(!open)}
+//             className="lg:hidden h-10 w-10 bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] text-lg rounded-full flex items-center justify-center pt-0.5"
+//           >
+//             {open ? (
+//               <i className="fa-solid fa-xmark"></i>
+//             ) : (
+//               <i className="fa-solid fa-bars"></i>
+//             )}
+//           </button>
+//         </div>
+
+//         <div
+//           className={`lg:hidden overflow-hidden transition-all duration-500 ${
+//             open ? "max-h-80 mt-4" : "max-h-0 max-w-0"
+//           }`}
+//         >
+//           <div className="flex flex-col gap-8 font-[paraFont] text-center py-3">
+//             <Link to="/" onClick={() => setOpen(false)}>
+//               Home
+//             </Link>
+//             <Link to="/about" onClick={() => setOpen(false)}>
+//               About
+//             </Link>
+//             <Link to="/projects" onClick={() => setOpen(false)}>
+//               Projects
+//             </Link>
+//             <p className="cursor-pointer" onClick={handleContact}>
+//               Contact
+//             </p>
+
+//             <div>
+//               <Button variant="secondary" href="/Resume.pdf">
+//                 Resume
+//               </Button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Navbar;
+
+
+
+
+
+
 import { useContext, useRef, useEffect, useState } from "react";
 import img1 from "../../images/qrxY8NagVO40NBrdhFEGgFR3PYY.avif";
 import { useLocation, useNavigate, Link } from "react-router-dom";
@@ -8,10 +129,10 @@ import Button from "../common/Button";
 
 function Navbar() {
   const nav = useRef();
+  const navInner = useRef();
   const [open, setOpen] = useState(false);
   const { cursor: cursorChange } = useContext(CursorContext);
   const { contactRef } = useContext(ContactContext);
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,26 +149,72 @@ function Navbar() {
 
   useEffect(() => {
     if (cursorChange === "big") {
-      gsap.to(nav.current, {
-        zIndex: 25,
-      });
+      gsap.to(nav.current, { zIndex: 25 });
     } else {
-      gsap.to(nav.current, {
-        zIndex: 20,
-      });
+      gsap.to(nav.current, { zIndex: 20 });
     }
   }, [cursorChange]);
+
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      let lastScroll = 0;
+
+      const onScroll = () => {
+        const current = window.scrollY;
+        const scrollingDown = current > lastScroll && current > 80;
+
+        if (scrollingDown) {
+          gsap.to(navInner.current, {
+            width: 0,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+          gsap.to(".nav-available", {
+            opacity: 1,
+            width: 120,
+            pointerEvents: "auto",
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        } else {
+          gsap.to(navInner.current, {
+            width: "auto",
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+          gsap.to(".nav-available", {
+            opacity: 0,
+            width: 0,
+            pointerEvents: "none",
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        }
+
+        lastScroll = current;
+      };
+
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    });
+
+    return () => mm.revert();
+  }, []);
 
   return (
     <div ref={nav} className="w-screen fixed flex justify-center top-4.5 z-20">
       <div
         className={`bg-white/90 backdrop-blur-xs border border-[#DADADA] dark:border-none dark:bg-[#111111]/90 
-  text-[#303030] dark:text-white p-2.5 rounded-4xl transition-all duration-500
-  ${open ? "scale-x-[1.03]" : "scale-x-100"} lg:w-lg`}
+        text-[#303030] dark:text-white p-2.5 rounded-4xl transition-all duration-500
+        ${open ? "scale-x-[1.03]" : "scale-x-100"}`}
       >
         <div className="w-full flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full overflow-hidden">
+            <div className="h-10 w-10 rounded-full overflow-hidden flex-shrink-0">
               <img src={img1} alt="" />
             </div>
             <p
@@ -55,9 +222,19 @@ function Navbar() {
             >
               Available for work <span className="text-green-500">●</span>
             </p>
+            <div
+              className="nav-available flex items-center gap-2 text-sm font-[paraFont] opacity-0 w-0 pointer-events-none whitespace-nowrap"
+            >
+              Available for work <span className="text-green-500">●</span>
+            </div>
           </div>
-          <div className="hidden lg:flex w-[83%] gap-4 items-center justify-between">
-            <div className="flex gap-4 items-center text-md font-[paraFont]">
+
+          <div
+            ref={navInner}
+            className="hidden lg:flex gap-4 items-center justify-between overflow-hidden"
+            style={{ width: "auto" }}
+          >
+            <div className="flex gap-4 items-center text-md font-[paraFont] whitespace-nowrap">
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
               <Link to="/projects">Projects</Link>
@@ -65,8 +242,11 @@ function Navbar() {
                 Contact
               </p>
             </div>
-            <Button variant="primary" href="/Resume.pdf">Resume</Button>
+            <Button variant="primary" href="/Resume.pdf">
+              Resume
+            </Button>
           </div>
+
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden h-10 w-10 bg-[#5E67E6] dark:bg-[#D0FF71] text-white dark:text-[#303030] text-lg rounded-full flex items-center justify-center pt-0.5"
@@ -85,23 +265,12 @@ function Navbar() {
           }`}
         >
           <div className="flex flex-col gap-8 font-[paraFont] text-center py-3">
-            <Link to="/" onClick={() => setOpen(false)}>
-              Home
-            </Link>
-            <Link to="/about" onClick={() => setOpen(false)}>
-              About
-            </Link>
-            <Link to="/projects" onClick={() => setOpen(false)}>
-              Projects
-            </Link>
-            <p className="cursor-pointer" onClick={handleContact}>
-              Contact
-            </p>
-
+            <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+            <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+            <Link to="/projects" onClick={() => setOpen(false)}>Projects</Link>
+            <p className="cursor-pointer" onClick={handleContact}>Contact</p>
             <div>
-              <Button variant="secondary" href="/Resume.pdf">
-                Resume
-              </Button>
+              <Button variant="secondary" href="/Resume.pdf">Resume</Button>
             </div>
           </div>
         </div>
