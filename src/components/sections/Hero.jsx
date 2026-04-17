@@ -220,6 +220,7 @@ function Hero({ skillsRef, experinceRef }) {
   const left = useRef();
   const right = useRef();
   const heroSection = useRef();
+  const hiCircle = useRef();
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -286,6 +287,11 @@ function Hero({ skillsRef, experinceRef }) {
               yPercent: -50,
               rotateY: self.progress * 180,
               rotateZ: self.progress * 4,
+            });
+
+            gsap.set(hiCircle.current, {
+              opacity: Math.max(0, 1 - self.progress * 2),
+              scale: 1 - self.progress * 0.8,
             });
           },
         });
@@ -374,7 +380,7 @@ function Hero({ skillsRef, experinceRef }) {
           className="fixed top-1/2 left-1/2 pointer-events-auto -translate-x-1/2 -translate-y-1/2"
           style={{ transformPerspective: "1000px" }}
         >
-          <HeroCard />
+          <HeroCard ref={hiCircle} />
         </div>
       </div>
 
