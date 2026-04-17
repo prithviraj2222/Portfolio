@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CursorContext from "../../context/cursor/cursorContext";
+import CursorContext from "../../context/cursor/CursorContext";
 
 function ProjectCard({ project }) {
   const { setCursor } = useContext(CursorContext);

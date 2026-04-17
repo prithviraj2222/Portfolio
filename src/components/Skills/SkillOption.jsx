@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CursorContext from "../../context/cursor/cursorContext";
+import CursorContext from "../../context/cursor/CursorContext";
 
 export default function SkillOption({ skill, open, setOpen }) {
   const isOpen = open === skill.id;

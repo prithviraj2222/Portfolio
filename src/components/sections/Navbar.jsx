@@ -122,7 +122,7 @@
 import { useContext, useRef, useEffect, useState } from "react";
 import img1 from "../../images/qrxY8NagVO40NBrdhFEGgFR3PYY.avif";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import CursorContext from "../../context/cursor/cursorContext";
+import CursorContext from "../../context/cursor/CursorContext";
 import gsap from "gsap";
 import ContactContext from "../../context/contact/contactContext";
 import Button from "../common/Button";

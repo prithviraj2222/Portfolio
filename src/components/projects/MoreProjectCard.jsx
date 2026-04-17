@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CursorContext from "../../context/cursor/cursorContext";
+import CursorContext from "../../context/cursor/CursorContext";
 import img1 from "../../images/VRQgkdWsjawSg1qpCm45HfSY1I.avif";
 
 function MoreProjectCard({ project }) {

@@ -5,7 +5,7 @@ import ProjectPage from "./pages/ProjectPage";
 import AboutPage from "./pages/AboutPage";
 import gsap from "gsap";
 import { useContext, useRef, useEffect } from "react";
-import CursorContext from "./context/cursor/cursorContext";
+import CursorContext from "./context/cursor/CursorContext";
 import ScrollToTop from "./ScrollToTop";
 import Lenis from "@studio-freight/lenis";
 import ScrollTrigger from "gsap/ScrollTrigger";
