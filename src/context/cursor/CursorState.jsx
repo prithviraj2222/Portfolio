@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CursorContext from "./cursorContext";
+import CursorContext from "./CursorContext";
 
 const CursorState = (props) => {
     const [cursor, setCursor] = useState("default");
