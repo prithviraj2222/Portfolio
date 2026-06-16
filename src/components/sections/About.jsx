@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import myPhoto from "../../images/qrxY8NagVO40NBrdhFEGgFR3PYY.avif";
+import myPhoto from "../../images/myphoto2.jpg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
